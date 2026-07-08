@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-step form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="form-container">
+
+     <!-- Sidebar nav --> 
+
+  <aside class="sidebar">
+    <ul class="step-indicator">
+
+    <li class="step active" data-step="1">
+      <span class="step-number">1</span>
+    <div class="step-text">
+      <small>Step 1</small>
+      <strong>Your info</strong>
+    </div>
+    </li>
+
+
+    <li class="step" data-step="2">
+       <span class="step-number">2</span>
+    <div class="step-text">
+       <small>Step 2</small>
+       <strong>Select plan</strong>
+    </div>
+    </li>
+
+    <li class="step" data-step="3">
+       <span class="step-number">3</span>
+    <div class="step-text">
+       <small>Step 3</small>
+       <strong>Add-ons</strong>
+    </div>
+    </li>
+
+    <li class="step" data-step="4">
+       <span class="step-number">4</span>
+    <div class="step-text">
+       <small>Step 4</small>
+       <strong>Summary</strong>
+    </div>
+    </li>
+
+    </ul>
+  </aside>
+
+    <!-- Main form area -->
+   
+  <main class="form-main">
+     <form id="multiStepForm" novalidate>
+
+            <!-- Step 1: Personal info -->
+    
+  <section class="form-step active" data-step="1">
+      <h1>Personal info</h1>
+      <p>Please provide your name, email address, and phone number.</p>
+
+   <div class="input-group">
+      <div class="input-label-row">
+        <label for="name">Name</label>
+        <span class="error-msg" id="nameError">This field is required</span>
+      </div>
+        <input type="text" id="name" name="name" placeholder="e.g. Stephen King" />
+    </div>
+
+    <div class="input-group">
+      <div class="input-label-row">
+        <label for="email">Email Address</label>
+        <span class="error-msg" id="emailError">This field is required</span>
+      </div>
+        <input type="email" id="email" name="email" placeholder="e.g. stephenking@lorem.com" />
+    </div>
+
+    <div class="input-group">
+      <div class="input-label-row">
+        <label for="phone">Phone Number</label>
+        <span class="error-msg" id="phoneError">This field is required</span>
+      </div>
+        <input type="tel" id="phone" name="phone" placeholder="e.g. +1 234 567 890" />
+      </div>
+    </section>
+
+              <!-- Step 2: Select plan -->
+
+    <section class="form-step" data-step="2">
+        <h1>Select your plan</h1>
+        <p>You have the option of monthly or yearly billing.</p>
+
+      <div class="plans">
+        <label class="plan-card">
+          <input type="radio" name="plan" value="arcade" data-monthly="9" data-yearly="90" />
+          <img src="images/icon-arcade.svg" alt="" />
+          <span class="plan-name">Arcade</span>
+          <span class="plan-price">$9/mo</span>
+        </label>
+
+        <label class="plan-card">
+          <input type="radio" name="plan" value="advanced" data-monthly="12" data-yearly="120" />
+          <img src="images/icon-advanced.svg" alt="" />
+          <span class="plan-name">Advanced</span>
+          <span class="plan-price">$12/mo</span>
+        </label>
+
+        <label class="plan-card">
+          <input type="radio" name="plan" value="pro" data-monthly="15" data-yearly="150" />
+          <img src="images/icon-pro.svg" alt="" />
+          <span class="plan-name">Pro</span>
+          <span class="plan-price">$15/mo</span>
+        </label>
+      </div>
+
+      <div class="billing-toggle">
+          <span class="monthly-label">Monthly</span>
+
+        <label class="switch">
+          <input type="checkbox" id="billingToggle" />
+          <span class="slider"></span>
+        </label>
+          <span class="yearly-label">Yearly</span>
+      </div>
+    </section>
+
+                    <!-- Step 3: Pick add-ons -->
+    <section class="form-step" data-step="3">
+          <h1>Pick add-ons</h1>
+          <p>Add-ons help enhance your gaming experience.</p>
+
+      <div class="addons">
+        <label class="addon-card">
+            <input type="checkbox" name="addon" value="online-service" data-monthly="1" data-yearly="10" />
+        <div class="addon-text">
+            <span class="addon-name">Online service</span>
+            <span class="addon-desc">Access to multiplayer games</span>
+        </div>
+            <span class="addon-price">+$1/mo</span>
+        </label>
+
+        <label class="addon-card">
+             <input type="checkbox" name="addon" value="larger-storage" data-monthly="2" data-yearly="20" />
+        <div class="addon-text">
+             <span class="addon-name">Larger storage</span>
+             <span class="addon-desc">Extra 1TB of cloud save</span>
+        </div>
+             <span class="addon-price">+$2/mo</span>
+        </label>
+
+        <label class="addon-card">
+              <input type="checkbox" name="addon" value="customizable-profile" data-monthly="2" data-yearly="20" />
+        <div class="addon-text">
+              <span class="addon-name">Customizable profile</span>
+              <span class="addon-desc">Custom theme on your profile</span>
+        </div>
+              <span class="addon-price">+$2/mo</span>
+        </label>
+        </div>
+    </section>
+
+                      <!-- Step 4: Summary -->
+
+    <section class="form-step" data-step="4">
+              <h1>Finishing up</h1>
+              <p>Double-check everything looks OK before confirming.</p>
+
+        <div class="summary-box">
+          <div class="summary-plan">
+            <div>
+              <span class="summary-plan-name" id="summaryPlanName"></span>
+              <a href="#" id="changePlanLink">Change</a>
+            </div>
+              <span class="summary-plan-price" id="summaryPlanPrice"></span>
+        </div>
+
+        <hr />
+
+        <div class="summary-addons" id="summaryAddons">
+              <!-- JS will inject selected add-ons here: -->
+        </div>
+        </div>
+
+        <div class="summary-total">
+            <span>Total (per <span id="summaryBillingPeriod">month</span>)</span>
+            <span class="summary-total-price" id="summaryTotalPrice"></span>
+        </div>
+    </section>
+
+                   <!-- Confirmation screen: -->
+
+    <section class="form-step" data-step="5">
+        <div class="thank-you">
+            <img src="images/icon-thank-you.svg" alt="" />
+            <h1>Thank you!</h1>
+            <p>Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com.</p>
+        </div>
+    </section>
+
+                           <!-- Navigation buttons: -->
+        <div class="form-nav">
+          <button type="button" id="backBtn" class="btn btn-back">Go Back</button>
+          <button type="button" id="nextBtn" class="btn btn-next">Next Step</button>
+          <button type="button" id="confirmBtn" class="btn btn-confirm">Confirm</button>
+        </div>
+
+      </form>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
